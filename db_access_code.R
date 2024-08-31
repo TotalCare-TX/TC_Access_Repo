@@ -5,6 +5,7 @@ library(dbplyr)
 library(tidyverse)
 library(RMySQL)
 library(withr)
+library(yaml)
 
 if (Sys.info()['user'] == "root") {
   
