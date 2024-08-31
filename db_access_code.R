@@ -4,6 +4,7 @@ library(DBI)
 library(dbplyr)
 library(tidyverse)
 library(RMySQL)
+library(withr)
 
 if (Sys.info()['user'] == "root") {
   
@@ -11,7 +12,8 @@ if (Sys.info()['user'] == "root") {
   
 } else {
   
-  config_path <- "http://10.10.70.65:3838/sample-apps/config/config.yml"
+  config_path <- local_tempfile(fileext = ".yml")
+  write_yaml(read_yaml("http://10.10.70.65:3838/sample-apps/config/config.yml"), config_path)
   
 }
 
